@@ -1,0 +1,10 @@
+name: Nexus Stability Fix
+on: [push]
+jobs:
+  stable-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # This fixes the 'unknown revision main' error by pulling all history
+      - run: git fetch origin main
